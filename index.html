@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>My page</title>
 </head>
+
+<form id="myForm">
+    <input type="text" id="name" placeholder="Enter name">
+    <input type="submit" value="Save"
+</form>
+
+<script>
+// Save form data to LocalStorage
+document.getElementById('myForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent form submission
+    const name = document.getElementById('name').value;
+    localStorage.setItem('userName', name);
+    alert('Data saved!');
+});
+
+// Retrieve saved data from LocalStorage
+window.onload = function() {
+    const savedName = localStorage.getItem('userName');
+    if (savedName) {
+        document.getElementById('name').value = savedName; // Pre-fill form field
+    }
+};
+</script>
+
 <body>
-    Hello World
+    Hello world
 </body>
 </html>
